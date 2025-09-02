@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Simple One‑Pager</title>
+  <meta name="description" content="A clean, responsive one‑page HTML template." />
+  <style>
+    :root {
+      --bg: #0f172a;          /* slate-900 */
+      --card: #111827;        /* gray-900 */
+      --muted: #94a3b8;       /* slate-400 */
+      --text: #e5e7eb;        /* gray-200 */
+      --accent: #22d3ee;      /* cyan-400 */
+      --accent-2: #a78bfa;    /* violet-400 */
+      --ring: rgba(34, 211, 238, 0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(167,139,250,.15), transparent 60%), radial-gradient(1000px 500px at 100% 0%, rgba(34,211,238,.12), transparent 60%), var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px);
+      background: rgba(15,23,42,.6); border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: inline-flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: .3px; }
+    .brand .dot { width: 10px; height: 10px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 0 20px rgba(167,139,250,.6); }
+    nav ul { list-style: none; display: flex; gap: 18px; padding: 0; margin: 0; }
+    nav a { padding: 8px 12px; border-radius: 10px; opacity: .9; }
+    nav a:hover { background: rgba(148,163,184,.1); opacity: 1; }
+
+    /* Hero */
+    .hero { padding: 70px 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin: 0 0 14px; }
+    .hero p { color: var(--muted); margin: 0 0 22px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(148,163,184,.2); box-shadow: var(--shadow); transition: transform .08s ease; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1020; font-weight: 700; border: none; }
+    .btn:active { transform: translateY(1px); }
+    .card { background: linear-gradient(180deg, rgba(17,24,39,.7), rgba(17,24,39,.6)); border: 1px solid rgba(148,163,184,.15); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .preview { aspect-ratio: 16/10; display: grid; place-items: center; font-weight: 600; color: #c7d2fe; background: radial-gradient(500px 300px at 70% 20%, rgba(167,139,250,.2), transparent 50%), radial-gradient(400px 250px at 20% 80%, rgba(34,211,238,.15), transparent 50%); }
+
+    /* Features */
+    section { padding: 70px 0; }
+    .section-title { font-size: clamp(22px, 3vw, 32px); margin: 0 0 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature { padding: 18px; }
+    .feature h3 { margin: 0 0 8px; font-size: 18px; }
+    .feature p { margin: 0; color: var(--muted); }
+
+    /* Contact */
+    form { display: grid; gap: 12px; max-width: 560px; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(148,163,184,.25); background: rgba(2,6,23,.35); color: var(--text); outline: none; }
+    input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 6px var(--ring); }
+    textarea { min-height: 120px; resize: vertical; }
+    .notice { font-size: 13px; color: var(--muted); }
+
+    /* Footer */
+    footer { padding: 40px 0; color: var(--muted); border-top: 1px solid rgba(148,163,184,.15); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .menu-btn { display: inline-flex; }
+    }
+    .menu-btn { display: none; padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(148,163,184,.25); background: rgba(2,6,23,.35); }
+    .mobile-nav { display: none; padding: 10px; }
+    .mobile-nav.open { display: grid; gap: 8px; }
+    .mobile-nav a { padding: 10px; border-radius: 10px; background: rgba(148,163,184,.08); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="dot" aria-hidden="true"></span>
+        <span>SimpleSite</span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#top" class="btn">Top</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="mobile-nav" class="container mobile-nav" role="navigation" aria-label="Mobile">
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div>
+        <h1>Build something delightful.</h1>
+        <p>A minimal, responsive one‑page template with modern styling. Copy it, tweak it, and make it yours.</p>
+        <div class="actions">
+          <a class="btn primary" href="#features">See Features</a>
+          <a class="btn" href="#contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="card preview">Your image or screenshot here</div>
+    </section>
+
+    <section id="features">
+      <h2 class="section-title">Features</h2>
+      <div class="grid">
+        <article class="card feature">
+          <h3>Fast & Lightweight</h3>
+          <p>No frameworks needed. Pure HTML, CSS, and a sprinkle of JS.</p>
+        </article>
+        <article class="card feature">
+          <h3>Responsive</h3>
+          <p>Looks great on phones, tablets, and desktops without extra effort.</p>
+        </article>
+        <article class="card feature">
+          <h3>Accessible</h3>
+          <p>Semantic markup, focus styles, and keyboard‑friendly controls.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <form onsubmit="event.preventDefault(); alert('Thanks! This demo doesn\'t send email.');">
+        <label>
+          <span>Name</span><br>
+          <input aria-label="Name" type="text" placeholder="Your name" required>
+        </label>
+        <label>
+          <span>Email</span><br>
+          <input aria-label="Email" type="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          <span>Message</span><br>
+          <textarea aria-label="Message" placeholder="Tell us a bit..." required></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p class="notice">This is a static demo form. Hook it to your backend or a form service to collect submissions.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> SimpleSite. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for in‑page links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const btn = document.querySelector('.menu-btn');
+    const mobile = document.getElementById('mobile-nav');
+    if (btn && mobile) {
+      btn.addEventListener('click', () => {
+        const open = mobile.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
