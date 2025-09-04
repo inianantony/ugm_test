@@ -1,12 +1,17 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
 
 const PORT = process.env.PORT || 3001;
 
 http.createServer((req, res) => {
-  // Always serve index.html
-  if (req.url === '/' || req.url === '/index.html') {
+  // Parse the URL to separate path from query parameters
+  const parsedUrl = url.parse(req.url);
+  const pathname = parsedUrl.pathname;
+  
+  // Always serve index.html for root path, regardless of query parameters
+  if (pathname === '/' || pathname === '/index.html') {
     fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {
       if (err) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
